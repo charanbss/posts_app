@@ -5,7 +5,9 @@ class PostCard extends StatelessWidget {
 
   final Post post;
   final Function delete;
-  PostCard({ required this.post , required this.delete});
+  final Function edit;
+  final num index;
+  PostCard({ required this.post , required this.delete, required this.index, required this.edit});
 
   @override
   Widget build(BuildContext context) {
@@ -32,14 +34,25 @@ class PostCard extends StatelessWidget {
               ),
             ),
             SizedBox(height: 8.0,),
-            Image(
-                image: NetworkImage('$post.url')
-            ),
+            Image.network(post.url, height: 250,),
             SizedBox(height: 8.0,),
-            TextButton.icon(
-              onPressed: delete(),
-              icon: Icon(Icons.delete),
-              label: Text('Delete'),
+            ButtonBar(
+              alignment: MainAxisAlignment.start,
+              children: [
+                TextButton.icon(
+                    onPressed: () {edit();},
+                    icon: Icon(Icons.edit),
+                    label:Text(
+                      'Edit',
+                    )
+                ),
+                SizedBox(width: 10.0),
+                TextButton.icon(
+                    onPressed: (){delete();},
+                    icon: Icon(Icons.delete),
+                    label:Text('Delete')
+                ),
+              ],
             ),
           ],
         ),

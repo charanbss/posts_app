@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:post_app/pages/home.dart';
 import 'package:post_app/pages/post_list.dart';
 import 'package:post_app/pages/form.dart';
-import 'package:post_app/post.dart';
+import 'package:post_app/pages/edit.dart';
 
 void main() => runApp(MaterialApp(
   initialRoute: '/home',
@@ -11,6 +11,7 @@ void main() => runApp(MaterialApp(
     '/home': (context) => Home(),
     '/form': (context) => MakePost(),
     '/posts': (context) => PostList(),
+    '/edit': (context) => EditPost(),
   },
 ));
 

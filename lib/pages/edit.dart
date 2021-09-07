@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 // import 'package:validators/validators.dart';
 // import 'package:validators/sanitizers.dart';
 
-class MakePost extends StatefulWidget {
+class EditPost extends StatefulWidget {
   @override
-  _MakePostState createState() => _MakePostState();
+  _EditPostState createState() => _EditPostState();
 }
 
-class _MakePostState extends State<MakePost> {
+class _EditPostState extends State<EditPost> {
 
   late String? title;
   late String? description;
@@ -94,6 +94,13 @@ class _MakePostState extends State<MakePost> {
 
   @override
   Widget build(BuildContext context) {
+
+    Map data={};
+    data = data.isNotEmpty ? data : ModalRoute.of(context)!.settings.arguments as Map;
+    title = TextEditingController(text: data['title']) as String?;
+    description = TextEditingController(text: data['description']) as String?;
+    url = TextEditingController(text: data['imgUrl']) as String?;
+
     return Scaffold(
       backgroundColor: Colors.blue[300],
       appBar: AppBar(
@@ -137,4 +144,3 @@ class _MakePostState extends State<MakePost> {
     );
   }
 }
-
